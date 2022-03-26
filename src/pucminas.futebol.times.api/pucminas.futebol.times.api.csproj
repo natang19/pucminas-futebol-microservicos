@@ -15,9 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dominio\" />
-    <Folder Include="Infraestrutura\" />
-    <Folder Include="Servico\" />
+    <ProjectReference Include="..\pucminas.futebol.servico\pucminas.futebol.servico.csproj" />
   </ItemGroup>
 
 </Project>

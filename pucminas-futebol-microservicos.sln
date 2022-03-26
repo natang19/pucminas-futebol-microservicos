@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aplicacao", "Aplicacao", "{0832267E-B3E1-4478-A307-2E4111EE7A37}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{3C438F80-8BB9-4556-A25E-5232FA38B774}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{3C438F80-8BB9-4556-A25E-5232FA38B774}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{49C4B7C5-E966-454D-A60A-DC94BCA30048}"
 EndProject
@@ -13,15 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "grpc", "grpc", "{0490A5BC-2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "worker", "worker", "{B22146F8-9713-4C03-BC7F-0E5D707DF5DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pucminas.futebol.times.api", "src\pucminas.futebol.times.api\pucminas.futebol.times.api.csproj", "{885F5697-AFF4-458E-BDEC-061F33D4A471}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pucminas.futebol.times.api", "src\pucminas.futebol.times.api\pucminas.futebol.times.api.csproj", "{885F5697-AFF4-458E-BDEC-061F33D4A471}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pucminas.futebol.jogadores.api", "src\pucminas.futebol.jogadores.api\pucminas.futebol.jogadores.api.csproj", "{A0850C03-E872-4CDC-B3BE-06FB2892EB26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pucminas.futebol.jogadores.api", "src\pucminas.futebol.jogadores.api\pucminas.futebol.jogadores.api.csproj", "{A0850C03-E872-4CDC-B3BE-06FB2892EB26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pucminas.futebol.transferencias.worker", "src\pucminas.futebol.transferencias.worker\pucminas.futebol.transferencias.worker.csproj", "{A7253A01-6135-4DAD-A8D0-73DC092FB5B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pucminas.futebol.transferencias.worker", "src\pucminas.futebol.transferencias.worker\pucminas.futebol.transferencias.worker.csproj", "{A7253A01-6135-4DAD-A8D0-73DC092FB5B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pucminas.futebol.core", "src\pucminas.futebol.core\pucminas.futebol.core.csproj", "{09F127C1-8839-474E-84A6-E378211572EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pucminas.futebol.jogadores.worker", "src\pucminas.futebol.jogadores.worker\pucminas.futebol.jogadores.worker.csproj", "{D233133D-A1F1-492B-9BCD-101FAA55E2E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pucminas.futebol.jogadores.worker", "src\pucminas.futebol.jogadores.worker\pucminas.futebol.jogadores.worker.csproj", "{D233133D-A1F1-492B-9BCD-101FAA55E2E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pucminas.futebol.infraestrutura", "src\pucminas.futebol.infraestrutura\pucminas.futebol.infraestrutura.csproj", "{DA0E490A-C4C8-40EE-8C71-64D8D0E37F56}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pucminas.futebol.servico", "src\pucminas.futebol.servico\pucminas.futebol.servico.csproj", "{B13E3CEA-FDCF-470B-910F-CD4A54EA7299}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pucminas.futebol.dominio", "src\pucminas.futebol.dominio\pucminas.futebol.dominio.csproj", "{4ABB8BDF-6F6F-42B6-BEBC-D92F92F824EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,14 +45,22 @@ Global
 		{A7253A01-6135-4DAD-A8D0-73DC092FB5B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7253A01-6135-4DAD-A8D0-73DC092FB5B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7253A01-6135-4DAD-A8D0-73DC092FB5B3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{09F127C1-8839-474E-84A6-E378211572EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{09F127C1-8839-474E-84A6-E378211572EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{09F127C1-8839-474E-84A6-E378211572EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{09F127C1-8839-474E-84A6-E378211572EE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D233133D-A1F1-492B-9BCD-101FAA55E2E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D233133D-A1F1-492B-9BCD-101FAA55E2E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D233133D-A1F1-492B-9BCD-101FAA55E2E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D233133D-A1F1-492B-9BCD-101FAA55E2E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA0E490A-C4C8-40EE-8C71-64D8D0E37F56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA0E490A-C4C8-40EE-8C71-64D8D0E37F56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA0E490A-C4C8-40EE-8C71-64D8D0E37F56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA0E490A-C4C8-40EE-8C71-64D8D0E37F56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B13E3CEA-FDCF-470B-910F-CD4A54EA7299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B13E3CEA-FDCF-470B-910F-CD4A54EA7299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B13E3CEA-FDCF-470B-910F-CD4A54EA7299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B13E3CEA-FDCF-470B-910F-CD4A54EA7299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ABB8BDF-6F6F-42B6-BEBC-D92F92F824EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ABB8BDF-6F6F-42B6-BEBC-D92F92F824EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ABB8BDF-6F6F-42B6-BEBC-D92F92F824EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ABB8BDF-6F6F-42B6-BEBC-D92F92F824EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,8 +72,10 @@ Global
 		{885F5697-AFF4-458E-BDEC-061F33D4A471} = {49C4B7C5-E966-454D-A60A-DC94BCA30048}
 		{A0850C03-E872-4CDC-B3BE-06FB2892EB26} = {49C4B7C5-E966-454D-A60A-DC94BCA30048}
 		{A7253A01-6135-4DAD-A8D0-73DC092FB5B3} = {B22146F8-9713-4C03-BC7F-0E5D707DF5DE}
-		{09F127C1-8839-474E-84A6-E378211572EE} = {3C438F80-8BB9-4556-A25E-5232FA38B774}
 		{D233133D-A1F1-492B-9BCD-101FAA55E2E0} = {B22146F8-9713-4C03-BC7F-0E5D707DF5DE}
+		{DA0E490A-C4C8-40EE-8C71-64D8D0E37F56} = {3C438F80-8BB9-4556-A25E-5232FA38B774}
+		{B13E3CEA-FDCF-470B-910F-CD4A54EA7299} = {3C438F80-8BB9-4556-A25E-5232FA38B774}
+		{4ABB8BDF-6F6F-42B6-BEBC-D92F92F824EC} = {3C438F80-8BB9-4556-A25E-5232FA38B774}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7166FF05-63D4-4FCB-BA0B-E01191C37C61}

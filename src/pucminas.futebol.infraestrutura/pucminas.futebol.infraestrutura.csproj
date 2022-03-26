@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Kafka\" />
+    <Folder Include="Mappers\" />
+    <Folder Include="HttpClients\" />
+    <Folder Include="ExtensionMethods\" />
+    <Folder Include="Repositorios\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\pucminas.futebol.dominio\pucminas.futebol.dominio.csproj" />
+  </ItemGroup>
+
+</Project>
