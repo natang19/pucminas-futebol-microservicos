@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aplicacao", "aplicacao", "{A7E13F06-22EE-4482-A81D-F11C9FC4FFF1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-domain", "1-domain", "{B05AAFEF-2EA1-4D63-A568-C8B9EFF76932}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-infrastructure", "2-infrastructure", "{D5242272-0599-4012-B4DB-0B75BAA88405}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-business", "3-business", "{0235FC5F-70B0-487F-BE15-350B482180BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pucminas.futebol.jogadores.domain", "src\pucminas.futebol.jogadores.domain\pucminas.futebol.jogadores.domain.csproj", "{557D0A4E-3168-4386-AE49-05BAD0B05827}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pucminas.futebol.core", "..\pucminas-futebol-core\src\pucminas.futebol.core\pucminas.futebol.core.csproj", "{F0C4574C-E6D4-47FD-B102-93644D5B3B24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pucminas.futebol.jogadores.infrastructure", "src\pucminas.futebol.jogadores.infrastructure\pucminas.futebol.jogadores.infrastructure.csproj", "{FD067FDF-3438-4360-A75F-DE138217DE15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pucminas.futebol.jogadores.business", "src\pucminas.futebol.jogadores.business\pucminas.futebol.jogadores.business.csproj", "{245437BD-14DF-46A4-867F-A8D552E84A39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pucminas.futebol.jogadores.api", "src\pucminas.futebol.jogadores.api\pucminas.futebol.jogadores.api.csproj", "{FF3E83BE-CED3-4452-AC7A-42EDC8877C61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pucminas.futebol.jogadores.grpc", "src\pucminas.futebol.jogadores.grpc\pucminas.futebol.jogadores.grpc.csproj", "{4A8317C2-1582-4F9A-843F-DF6B4253F796}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{557D0A4E-3168-4386-AE49-05BAD0B05827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{557D0A4E-3168-4386-AE49-05BAD0B05827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{557D0A4E-3168-4386-AE49-05BAD0B05827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{557D0A4E-3168-4386-AE49-05BAD0B05827}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0C4574C-E6D4-47FD-B102-93644D5B3B24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0C4574C-E6D4-47FD-B102-93644D5B3B24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0C4574C-E6D4-47FD-B102-93644D5B3B24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0C4574C-E6D4-47FD-B102-93644D5B3B24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD067FDF-3438-4360-A75F-DE138217DE15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD067FDF-3438-4360-A75F-DE138217DE15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD067FDF-3438-4360-A75F-DE138217DE15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD067FDF-3438-4360-A75F-DE138217DE15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{245437BD-14DF-46A4-867F-A8D552E84A39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{245437BD-14DF-46A4-867F-A8D552E84A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{245437BD-14DF-46A4-867F-A8D552E84A39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{245437BD-14DF-46A4-867F-A8D552E84A39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF3E83BE-CED3-4452-AC7A-42EDC8877C61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF3E83BE-CED3-4452-AC7A-42EDC8877C61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF3E83BE-CED3-4452-AC7A-42EDC8877C61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF3E83BE-CED3-4452-AC7A-42EDC8877C61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A8317C2-1582-4F9A-843F-DF6B4253F796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A8317C2-1582-4F9A-843F-DF6B4253F796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A8317C2-1582-4F9A-843F-DF6B4253F796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A8317C2-1582-4F9A-843F-DF6B4253F796}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{557D0A4E-3168-4386-AE49-05BAD0B05827} = {B05AAFEF-2EA1-4D63-A568-C8B9EFF76932}
+		{F0C4574C-E6D4-47FD-B102-93644D5B3B24} = {B05AAFEF-2EA1-4D63-A568-C8B9EFF76932}
+		{FD067FDF-3438-4360-A75F-DE138217DE15} = {D5242272-0599-4012-B4DB-0B75BAA88405}
+		{245437BD-14DF-46A4-867F-A8D552E84A39} = {0235FC5F-70B0-487F-BE15-350B482180BC}
+		{FF3E83BE-CED3-4452-AC7A-42EDC8877C61} = {A7E13F06-22EE-4482-A81D-F11C9FC4FFF1}
+		{4A8317C2-1582-4F9A-843F-DF6B4253F796} = {A7E13F06-22EE-4482-A81D-F11C9FC4FFF1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1448D308-2771-4C42-AD36-26CC20E7DBA3}
+	EndGlobalSection
+EndGlobal
