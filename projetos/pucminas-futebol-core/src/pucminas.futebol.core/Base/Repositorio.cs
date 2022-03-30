@@ -1,47 +1,59 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.Extensions.Options;
+using MongoDB.Driver;
+using pucminas.futebol.core.ModelOptions;
+using System.Linq.Expressions;
 
 namespace pucminas.futebol.core.Base
 {
-    public abstract class Repository<TEntidade> : IRepositorio<TEntidade> where TEntidade : Entidade, new()
+    public abstract class Repositorio<TEntidade> : IRepositorio<TEntidade> where TEntidade : Entidade, new()
     {
-        public Task<IEnumerable<TEntidade>> Buscar(Expression<Func<TEntidade, bool>> predicate)
+        protected readonly IMongoCollection<TEntidade> _collection;
+
+        public Repositorio(IOptions<MongoDbConnection> options)
+        {
+            var mongoDbClient = new MongoClient(options.Value.ConnectionString);
+            var database = mongoDbClient.GetDatabase(options.Value.DatabaseName);
+            _collection = database.GetCollection<TEntidade>(options.Value.CollectionName);
+        }
+
+        public virtual Task<IEnumerable<TEntidade>> Buscar(Expression<Func<TEntidade, bool>> filtro)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<TEntidade>> Obter()
+        public async Task<IEnumerable<TEntidade>> Obter()
         {
-            throw new NotImplementedException();
+            //_logger.LogInformation("Obtendo todos os registros da collection!");
+            var result = await _collection.FindAsync(_ => true);
+
+            return result.ToList();
         }
 
-        public Task<TEntidade> Obter(Guid id)
+        public async Task<TEntidade> Obter(string id)
         {
-            throw new NotImplementedException();
+            //_logger.LogInformation($"Obtendo o registro {id} da collection!");
+            var result = await _collection.FindAsync(entidade => entidade.Id == id);
+
+            return result.FirstOrDefault();
         }
 
-        public Task Adicionar(TEntidade entity)
+        public Task Adicionar(TEntidade entidade)
         {
-            throw new NotImplementedException();
+            //_logger.LogInformation("Inserido registro na collection!");
+            return _collection.InsertOneAsync(entidade);
         }
 
-        public Task Atualizar(TEntidade entity)
+        public Task Atualizar(TEntidade entidade)
         {
-            throw new NotImplementedException();
+            return _collection.ReplaceOneAsync(e => e.Id == entidade.Id, entidade, new ReplaceOptions { IsUpsert = true });
         }
 
-        public Task Remover(Guid id)
+        public Task Remover(string id)
         {
-            throw new NotImplementedException();
+            //_logger.LogInformation($"Removendo o registro {id} da collection!");
+            return _collection.DeleteOneAsync(entidade => entidade.Id == id);
         }
 
-        public Task<int> SaveChanges()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+        public void Dispose() { }
     }
 }

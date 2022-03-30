@@ -1,14 +1,17 @@
-﻿namespace pucminas.futebol.core.Base
+﻿using MongoDB.Bson.Serialization.Attributes;
+
+namespace pucminas.futebol.core.Base
 {
     public abstract record Entidade
     {
-        public Guid Id { get; }
+        [BsonId]
+        [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
+        public string Id { get; }
+
         public DateTime Criacao { get; }
-        public DateTime UltimaAtualizacao { get; private set; }
 
         public Entidade()
         {
-            Id = Guid.NewGuid();
             Criacao = DateTime.UtcNow;
         }
     }
