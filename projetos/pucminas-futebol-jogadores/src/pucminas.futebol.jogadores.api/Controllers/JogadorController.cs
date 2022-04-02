@@ -6,13 +6,14 @@ using pucminas.futebol.jogadores.infrastructure.CQRS.Queries;
 namespace pucminas.futebol.jogadores.api.Controllers
 {
     [ApiController]
+    [Produces("application/json")]
     [Route("jogadores")]
     public class JogadorController : ControllerBase
     {
         private readonly ILogger<JogadorController> _logger;
-        private readonly IMediator _mediator;
+        private readonly ISender _mediator;
 
-        public JogadorController(ILogger<JogadorController> logger, IMediator mediator)
+        public JogadorController(ILogger<JogadorController> logger, ISender mediator)
         {
             _logger = logger;
             _mediator = mediator;
