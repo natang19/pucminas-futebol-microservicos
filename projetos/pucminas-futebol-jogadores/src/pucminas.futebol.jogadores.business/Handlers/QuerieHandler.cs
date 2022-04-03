@@ -14,9 +14,9 @@ namespace pucminas.futebol.jogadores.business.Handlers
             _jogadorRepositorio = jogadorRepositorio;
         }
 
-        public async Task<IEnumerable<Jogador>> Handle(ObterJogadoresQuerie request, CancellationToken cancellationToken)
+        public Task<IEnumerable<Jogador>> Handle(ObterJogadoresQuerie request, CancellationToken cancellationToken)
         {
-            return await _jogadorRepositorio.Obter();
+            return _jogadorRepositorio.Obter();
         }
     }
 }

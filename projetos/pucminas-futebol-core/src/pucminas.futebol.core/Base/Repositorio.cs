@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using pucminas.futebol.core.ModelOptions;
 using System.Linq.Expressions;
@@ -32,7 +33,7 @@ namespace pucminas.futebol.core.Base
         public async Task<TEntidade> Obter(string id)
         {
             //_logger.LogInformation($"Obtendo o registro {id} da collection!");
-            var result = await _collection.FindAsync(entidade => entidade.Id == id);
+            var result = await _collection.FindAsync(entidade => entidade.Id == ObjectId.Parse(id));
 
             return result.FirstOrDefault();
         }
@@ -51,7 +52,7 @@ namespace pucminas.futebol.core.Base
         public Task Remover(string id)
         {
             //_logger.LogInformation($"Removendo o registro {id} da collection!");
-            return _collection.DeleteOneAsync(entidade => entidade.Id == id);
+            return _collection.DeleteOneAsync(entidade => entidade.Id == ObjectId.Parse(id));
         }
 
         public void Dispose() { }

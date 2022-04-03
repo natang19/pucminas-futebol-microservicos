@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace pucminas.futebol.core.Base
 {
@@ -6,12 +7,13 @@ namespace pucminas.futebol.core.Base
     {
         [BsonId]
         [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-        public string Id { get; }
+        public ObjectId Id { get; }
 
         public DateTime Criacao { get; }
 
         public Entidade()
         {
+            Id = ObjectId.GenerateNewId();
             Criacao = DateTime.UtcNow;
         }
     }

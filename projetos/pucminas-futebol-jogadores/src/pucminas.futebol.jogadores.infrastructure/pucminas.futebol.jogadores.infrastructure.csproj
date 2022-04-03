@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Kafka\" />
-    <Folder Include="CQRS\Commands\" />
   </ItemGroup>
 
   <ItemGroup>
