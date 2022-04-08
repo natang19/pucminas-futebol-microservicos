@@ -2,7 +2,6 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 using pucminas.futebol.core.ModelOptions;
-using System.Linq.Expressions;
 
 namespace pucminas.futebol.core.Base
 {
@@ -17,9 +16,11 @@ namespace pucminas.futebol.core.Base
             _collection = database.GetCollection<TEntidade>(options.Value.CollectionName);
         }
 
-        public virtual Task<IEnumerable<TEntidade>> Buscar(Expression<Func<TEntidade, bool>> filtro)
+        public virtual async Task<IEnumerable<TEntidade>> Buscar(FilterDefinition<TEntidade> filtro)
         {
-            throw new NotImplementedException();
+            var result = await _collection.FindAsync(filtro);
+
+            return result.ToList();
         }
 
         public async Task<IEnumerable<TEntidade>> Obter()

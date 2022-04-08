@@ -6,10 +6,10 @@ namespace pucminas.futebol.core.Base
     public abstract record Entidade
     {
         [BsonId]
-        [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-        public ObjectId Id { get; }
+        //[BsonRepresentation(BsonType.ObjectId)]
+        public ObjectId Id { get; init; }
 
-        public DateTime Criacao { get; }
+        public DateTime Criacao { get; init; }
 
         public Entidade()
         {

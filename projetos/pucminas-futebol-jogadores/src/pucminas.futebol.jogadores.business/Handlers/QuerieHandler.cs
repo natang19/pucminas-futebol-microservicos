@@ -1,11 +1,14 @@
-﻿using MediatR;
+﻿
+using MediatR;
 using pucminas.futebol.jogadores.domain.Entidades;
 using pucminas.futebol.jogadores.infrastructure.CQRS.Queries;
 using pucminas.futebol.jogadores.infrastructure.Repositorio;
 
 namespace pucminas.futebol.jogadores.business.Handlers
 {
-    public class QuerieHandler : IRequestHandler<ObterJogadoresQuerie, IEnumerable<Jogador>>
+    public class QuerieHandler : 
+        IRequestHandler<ObterJogadoresQuerie, IEnumerable<Jogador>>, 
+        IRequestHandler<ObterJogadorPorIdQuerie, Jogador>
     {
         private readonly IJogadorRepositorio _jogadorRepositorio;
 
@@ -17,6 +20,11 @@ namespace pucminas.futebol.jogadores.business.Handlers
         public Task<IEnumerable<Jogador>> Handle(ObterJogadoresQuerie request, CancellationToken cancellationToken)
         {
             return _jogadorRepositorio.Obter();
+        }
+
+        public Task<Jogador> Handle(ObterJogadorPorIdQuerie request, CancellationToken cancellationToken)
+        {
+            return _jogadorRepositorio.Obter(request.id);
         }
     }
 }
