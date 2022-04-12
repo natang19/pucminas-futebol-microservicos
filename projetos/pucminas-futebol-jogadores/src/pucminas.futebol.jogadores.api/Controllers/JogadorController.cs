@@ -13,13 +13,11 @@ namespace pucminas.futebol.jogadores.api.Controllers
     [Route("jogadores")]
     public class JogadorController : ControllerBase
     {
-        private readonly ILogger<JogadorController> _logger;
         private readonly ISender _mediator;
         private readonly IMapper _mapper;
 
-        public JogadorController(ILogger<JogadorController> logger, ISender mediator, IMapper mapper)
+        public JogadorController(ISender mediator, IMapper mapper)
         {
-            _logger = logger;
             _mediator = mediator;
             _mapper = mapper;
         }
@@ -48,27 +46,27 @@ namespace pucminas.futebol.jogadores.api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<JogadorResponseDTO>> GetById([FromRoute]string id)
         {
-            var querieResult = await _mediator.Send(new ObterJogadorPorIdQuerie(id));
+            var jogador = await _mediator.Send(new ObterJogadorPorIdQuerie(id));
 
-            if (querieResult is null)
+            if (jogador is null)
             {
                 return NotFound("Jogador não encontrado!");
             }
 
-            return Ok(_mapper.Map<JogadorResponseDTO>(querieResult));
+            return Ok(_mapper.Map<JogadorResponseDTO>(jogador));
         }
 
         [HttpPost]
         [ProducesResponseType(typeof(JogadorResponseDTO), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Post([FromBody] JogadorDTO jogadorDTO)
+        public async Task<IActionResult> Post([FromBody] JogadorDTO jogadorDto)
         {
-            var commandResult = await _mediator.Send(new CadastrarJogadorCommand(jogadorDTO.Nome, jogadorDTO.Sobrenome, jogadorDTO.DataNascimento, jogadorDTO.Pais, jogadorDTO.IdTime));
+            var commandResult = await _mediator.Send(new CadastrarJogadorCommand(jogadorDto.Nome, jogadorDto.Sobrenome, jogadorDto.DataNascimento, jogadorDto.Pais, jogadorDto.IdTime));
 
-            var jogadorResponseDTO = _mapper.Map<JogadorResponseDTO>(commandResult);
+            var jogadorResponseDto = _mapper.Map<JogadorResponseDTO>(commandResult);
 
-            return CreatedAtAction(nameof(GetById), new { Id = jogadorResponseDTO.Id}, jogadorResponseDTO);
+            return CreatedAtAction(nameof(GetById), new { Id = jogadorResponseDto.Id}, jogadorResponseDto);
         }
 
         [HttpPut]
@@ -76,23 +74,23 @@ namespace pucminas.futebol.jogadores.api.Controllers
         [ProducesResponseType(typeof(JogadorResponseDTO), StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Put([FromBody] JogadorUpdateDTO jogadorDTO)
+        public async Task<IActionResult> Put([FromBody] JogadorUpdateDTO jogadorDto)
         {
-            JogadorResponseDTO jogadorResponseDTO;
+            JogadorResponseDTO jogadorResponseDto;
 
-            if (string.IsNullOrEmpty(jogadorDTO.Id))
+            if (string.IsNullOrEmpty(jogadorDto.Id))
             {
-                var criacaoCommandResult = await _mediator.Send(new CadastrarJogadorCommand(jogadorDTO.Nome, jogadorDTO.Sobrenome, jogadorDTO.DataNascimento, jogadorDTO.Pais, jogadorDTO.IdTime));
+                var criacaoCommandResult = await _mediator.Send(new CadastrarJogadorCommand(jogadorDto.Nome, jogadorDto.Sobrenome, jogadorDto.DataNascimento, jogadorDto.Pais, jogadorDto.IdTime));
 
-                jogadorResponseDTO = _mapper.Map<JogadorResponseDTO>(criacaoCommandResult);
+                jogadorResponseDto = _mapper.Map<JogadorResponseDTO>(criacaoCommandResult);
 
-                return CreatedAtAction(nameof(GetById), new { Id = jogadorResponseDTO.Id }, jogadorResponseDTO);
+                return CreatedAtAction(nameof(GetById), new { Id = jogadorResponseDto.Id }, jogadorResponseDto);
             }
 
-            var atualizacaoCommandResult = await _mediator.Send(new AtualizarJogadorCommand(jogadorDTO));
-            jogadorResponseDTO = _mapper.Map<JogadorResponseDTO>(atualizacaoCommandResult);
+            var atualizacaoCommandResult = await _mediator.Send(new AtualizarJogadorCommand(jogadorDto));
+            jogadorResponseDto = _mapper.Map<JogadorResponseDTO>(atualizacaoCommandResult);
 
-            return Ok(jogadorResponseDTO);
+            return Ok(jogadorResponseDto);
         }
 
         [HttpDelete("{id}")]

@@ -7,9 +7,9 @@ namespace pucminas.futebol.core.Base
 {
     public abstract class Repositorio<TEntidade> : IRepositorio<TEntidade> where TEntidade : Entidade, new()
     {
-        protected readonly IMongoCollection<TEntidade> _collection;
+        private readonly IMongoCollection<TEntidade> _collection;
 
-        public Repositorio(IOptions<MongoDbConnection> options)
+        protected Repositorio(IOptions<MongoDbConnection> options)
         {
             var mongoDbClient = new MongoClient(options.Value.ConnectionString);
             var database = mongoDbClient.GetDatabase(options.Value.DatabaseName);
@@ -25,7 +25,6 @@ namespace pucminas.futebol.core.Base
 
         public async Task<IEnumerable<TEntidade>> Obter()
         {
-            //_logger.LogInformation("Obtendo todos os registros da collection!");
             var result = await _collection.FindAsync(_ => true);
 
             return result.ToList();
@@ -33,7 +32,6 @@ namespace pucminas.futebol.core.Base
 
         public async Task<TEntidade> Obter(string id)
         {
-            //_logger.LogInformation($"Obtendo o registro {id} da collection!");
             var result = await _collection.FindAsync(entidade => entidade.Id == ObjectId.Parse(id));
 
             return result.FirstOrDefault();
@@ -41,7 +39,6 @@ namespace pucminas.futebol.core.Base
 
         public Task Adicionar(TEntidade entidade)
         {
-            //_logger.LogInformation("Inserido registro na collection!");
             return _collection.InsertOneAsync(entidade);
         }
 
@@ -52,10 +49,7 @@ namespace pucminas.futebol.core.Base
 
         public Task Remover(string id)
         {
-            //_logger.LogInformation($"Removendo o registro {id} da collection!");
             return _collection.DeleteOneAsync(entidade => entidade.Id == ObjectId.Parse(id));
         }
-
-        public void Dispose() { }
     }
 }

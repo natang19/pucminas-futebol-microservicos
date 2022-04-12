@@ -6,12 +6,12 @@ namespace pucminas.futebol.core.Base
     public abstract record Entidade
     {
         [BsonId]
-        //[BsonRepresentation(BsonType.ObjectId)]
+        [BsonRepresentation(BsonType.ObjectId)]
         public ObjectId Id { get; init; }
 
         public DateTime Criacao { get; init; }
 
-        public Entidade()
+        protected Entidade()
         {
             Id = ObjectId.GenerateNewId();
             Criacao = DateTime.UtcNow;

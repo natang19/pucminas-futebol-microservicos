@@ -2,7 +2,7 @@
 
 namespace pucminas.futebol.core.Base
 {
-    public interface IRepositorio<TEntidade> : IDisposable where TEntidade : Entidade
+    public interface IRepositorio<TEntidade> where TEntidade : Entidade
     {
         Task<IEnumerable<TEntidade>> Buscar(FilterDefinition<TEntidade> filtro);
         Task<IEnumerable<TEntidade>> Obter();

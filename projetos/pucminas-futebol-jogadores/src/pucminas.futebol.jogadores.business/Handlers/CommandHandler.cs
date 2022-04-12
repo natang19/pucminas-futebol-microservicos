@@ -21,12 +21,11 @@ namespace pucminas.futebol.jogadores.business.Handlers
 
         public async Task<Jogador> Handle(CadastrarJogadorCommand request, CancellationToken cancellationToken)
         {
-            //Verificar se existe jogador com o mesmo nome e sobrenome
             var builder = Builders<Jogador>.Filter;
             var filtro = builder.Eq(j => j.Nome, request.nome) & builder.Eq(j => j.Sobrenome, request.sobrenome);
-            var resultadoBusca = await _jogadorRepositorio.Buscar(filtro);
+            var jogadores = await _jogadorRepositorio.Buscar(filtro);
 
-            if (resultadoBusca.Any())
+            if (jogadores.Any())
             {
                 throw new BusinessException("Jogador já possui cadastro no sistema!");
             }
